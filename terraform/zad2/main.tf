@@ -23,6 +23,11 @@ resource "docker_container" "nginx" {
     external = 8080
   }
 }
+resource "docker_tag" "zad1" {
+  source_image = docker_image.nginx.name
+  target_image = "arit1"
+}
+
 
 output "address" {
   value = "http://localhost:${docker_container.nginx.ports[0].external}"
